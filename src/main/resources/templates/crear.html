@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/crear.css"/>
+    </head> 
+    <body>
+        <div class="container">
+            <h1>Crear</h1>
+            <form th:object ="${pelicula}"th:action="@{/save}"    method="POST">
+                <input type="hidden" th:field="*{id}">
+                <div class="espacio">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" th:field="*{nombre}" required>
+                </div>
+                <div class="espacio">
+                    <label for="costo">Costo</label>
+                    <input type="number" id="costo" th:field="*{costo}" required>
+                </div>
+                <div class="espacio">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" id="fecha" th:field="*{fecha}" required>
+                </div>
+       
+                <div class="espacio">
+                    <label for="sala">Sala:</label>
+                    <select id="sala" th:field="*{sala}" required>
+                        <option value="">Seleccione la Sala</option>
+                        <option th:each="sala : ${salas}" th:value="${sala.id}" th:text="${sala.numSala}"></option>
+                    </select>
+                </div>
+                <button type="submit" value="Guardar">Guardar peli</button>
+        </div>
+
+    </div>
+</body>
+
+</html>
